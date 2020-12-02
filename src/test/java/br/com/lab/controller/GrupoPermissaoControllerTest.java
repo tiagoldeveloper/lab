@@ -1,0 +1,21 @@
+package br.com.lab.controller;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+//TODO: falta fazer os testes
+class GrupoPermissaoControllerTest {
+
+    @Test
+    void listar() {
+    }
+
+    @Test
+    void associar() {
+    }
+
+    @Test
+    void desassociar() {
+    }
+}

@@ -1,0 +1,11 @@
+ List<String> chaves = exception.getAllErrors().stream().map(objectError -> {
+            StringBuilder chave = new StringBuilder();
+            chave.append(objectError.getObjectName());
+            if (objectError instanceof FieldError) {
+                if(objectError.getObjectName() !=null){
+                    chave.append(".");
+                }
+                chave.append(((FieldError) objectError).getField());
+            }
+            return chave.toString();
+        }).collect(Collectors.toList());

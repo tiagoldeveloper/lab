@@ -1,5 +1,6 @@
 package br.com.lab.service;
 
+import br.com.lab.domain.model.Grupo;
 import br.com.lab.domain.model.Usuario;
 import br.com.lab.dto.UsuarioModelDTO;
 import br.com.lab.model.UsuarioModel;
@@ -27,7 +28,11 @@ public class UsuarioService {
 
     @Transactional
     public UsuarioModel salvar(UsuarioInput usuarioInput) {
+        List<Grupo> grupos = usuarioInput.getGrupos() !=null ? usuarioRepository.recupera(Grupo.class, usuarioInput.getGrupos()) : null;
         Usuario novoUsuario = usuarioModelDTO.toUsuarioObject(usuarioInput);
+        grupos.forEach(umGrupo -> {
+            novoUsuario.adicionaGrupo(umGrupo);
+        });
         Usuario usuarioSaved = usuarioRepository.salvar(novoUsuario);
         return usuarioModelDTO.toUsuarioModel(usuarioSaved);
     }

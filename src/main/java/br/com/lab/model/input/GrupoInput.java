@@ -1,6 +1,7 @@
 package br.com.lab.model.input;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 public class GrupoInput {
 
@@ -10,6 +11,9 @@ public class GrupoInput {
 
     @NotBlank
     private String descricao;
+
+    private List<Long> permissoes;
+
 
     public String getNome() {
         return nome;
@@ -27,5 +31,11 @@ public class GrupoInput {
         this.descricao = descricao;
     }
 
+    public List<Long> getPermissoes() {
+        return permissoes;
+    }
 
+    public void setPermissoes(List<Long> permissoes) {
+        this.permissoes = permissoes;
+    }
 }

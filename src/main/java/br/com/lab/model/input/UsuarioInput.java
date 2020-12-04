@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class UsuarioInput {
 
@@ -26,6 +27,8 @@ public class UsuarioInput {
 
 
     private Date data;
+
+    private List<Long> grupos;
 
 
     public String getNome() {
@@ -74,5 +77,14 @@ public class UsuarioInput {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+
+    public List<Long> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(List<Long> grupos) {
+        this.grupos = grupos;
     }
 }

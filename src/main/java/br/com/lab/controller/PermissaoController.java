@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/permissao")
+@CrossOrigin(origins  = "http://localhost:4200")
 public class PermissaoController {
 
     @Autowired

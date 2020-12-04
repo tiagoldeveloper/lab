@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -53,6 +54,27 @@ public class LabRepository implements LabRepositoryBase {
             throw ex;
         }
     }
+
+    @Override
+    public <T> List<T> recupera(Class<T> classe, List<Long> ids) {
+        try {
+            CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();
+            CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(classe);
+            Root<T> root = criteriaQuery.from(classe);
+            criteriaQuery.select(root);
+            ParameterExpression<Integer> ativo = criteriaBuilder.parameter(Integer.class, "ativo");
+            criteriaQuery.where(criteriaBuilder.equal(root.get("ativo"), ativo), root.get("id").in(ids));
+            TypedQuery<T> typedQuery = manager.createQuery(criteriaQuery);
+            typedQuery.setParameter("ativo", Integer.valueOf(1));
+
+            return typedQuery.getResultList();
+
+        }catch (Exception ex){
+            throw ex;
+        }
+    }
+
+
 
     @Override
     public <T> List<T> recupera(Class<T> classe, Pageable pageable) {

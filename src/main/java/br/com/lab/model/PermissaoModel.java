@@ -5,6 +5,7 @@ public class PermissaoModel {
     private Long id;
     private String nome;
     private String descricao;
+    private boolean marcado;
 
 
     public Long getId() {
@@ -29,5 +30,13 @@ public class PermissaoModel {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 }

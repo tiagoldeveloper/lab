@@ -20,9 +20,6 @@ target/
 *.ipr
 
 
-### Documentação ###
-doc
-sql
 
 ### NetBeans ###
 /nbproject/private/

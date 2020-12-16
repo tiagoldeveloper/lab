@@ -1,0 +1,134 @@
+Essa documentação é somente para me organizar nos meus estudos, ou seja, não é nada oficial, ou a pedido de ninguém.
+
+PS: todo projeto no meu ponto de vista técnico deve ter regras(padrões), abaixo segue o meu.
+
+Algumas regras(técnicas) minhas pessoais para o projeto:
+
+1. Regra de banco de dados:
+- tabela de começar com tb_nome_da_tabela;
+- coluna deve comecar seguido ex: tb_usuario usu_id, usu_nome;
+- foreign key = fk_nome_da_fk;
+- index = ind_nome_da_index;
+- unique uni_nome_da_unique;
+- view vw_nome_view;
+- trigguer tr_nome_da_trigger;
+- procedure proc_nome_da_procedure;
+- function func_nome_da_function;
+- toda manutenção via banco deve sempre popular a versão e data de última alteração e usuário.
+
+2. Regra do projeto api:
+- usar jpa(hibernate);
+- usar queryes nativa do jpa com criteria;
+- todas queryes deve filtrar a coluna ativo = 1;
+- nunca deve rodar um select * from nome_tabela, ou seja sempre limitar o tamanho das queryes;
+- nome de pacotes sempre deve começar com: br.com.nome.do.projeto;
+- usar o máximo do java 8 9 e 11;
+- usar o máximo de queryes genéricas;
+- usar o maven para controle de versão;
+- usar o intellij como ide;
+- nunca deve usar a mesma clase de domínio para representar os dados da api, sempre usar classes modelos(dtos);
+- nunca deve deixar o hibernate gerar as tabelas de banco, sempre deve mapear nas classes;
+- todas as colunas devem ser mapeadas com os nomes das mesma igual do banco de dados;
+- usar spring security para segurança da api;
+- sempre deve tratar os erros de retorno da api, ou seja, não pode retornar traces não tratados;
+- As mensagem, nome de campos, mensagem de validação sempre deve ficar no banco de dados e nunca fixo.
+
+=========================================================Análise do projeto=========================================================
+
+Esse projeto(api) visa fornecer várias endpoints para futuras implementações de um sistema(genérico), e essa api.
+Inicialmente irá conter endpoints de usuários, permissões, grupos, grupos de permissões e usuários por grupos.
+
+Nome do projeto lab.
+
+===========================================================Banco de dados=============================================================
+
+1. Criar um banco de dados no mysql chamado lab.
+
+2. Criar uma tabela(permissão) com os seguintes campos:
+- id;
+- url;
+- nome;
+- ativo;
+- data ultima alteração;
+- versao;
+- usuario ultima alteração.
+
+3. Criar uma tabela(grupo) com os seguintes campos:
+- id;
+- nome;
+- descricao;
+- ativo;
+- data ultima alteração;
+- versao;
+- usuario ultima alteração.
+
+4. Criar uma tabela(usuário) com os seguintes campos:
+- id;
+- nome;
+- login;
+- senha;
+- ativo;
+- data ultima alteração;
+- versao;
+- usuario ultima alteração.
+
+5. Criar tabela(grupo de permissão) com os seguintes campos:
+- id do grupo;
+- id da permissão.
+
+6. Criar tabela(grupo de usuário) com os seguintes campos:
+- id do usuário;
+- id do grupo.
+
+7. Criar uma tabela(mensagem) com os seguintes campos:
+- id;
+- chave;
+- valor;
+- ativo;
+- data ultima alteração;
+- versao;
+- usuario ultima alteração.
+
+8. Criar tabelas de históricos(update, delete) das seguintes tabelas: permissão, grupo e usuário.
+
+
+=========================================Projeto java==============================================
+
+1. Criar um projeto em java(maven) na versão 11, com o framework spring boot.
+
+2. O nome do projeto lab.
+
+3. Criar endpoint(permissão) com base nos campos do banco de dados, com as seguintes operações:
+- salvar;
+- atualizar;
+- listar;
+- buscar;
+- remover.
+
+4. Criar endpoint(grupo) com base nos campos do banco de dados, com as seguintes operações:
+- salvar;
+- atualizar;
+- listar;
+- buscar;
+- remover.
+
+5. Criar endpoint(usuário) com base nos campos do banco de dados, com as seguintes operações:
+- salvar;
+- atualizar;
+- listar;
+- buscar;
+- remover.
+
+6. Criar endpoint(usuário grupo controler) com as seguintes operações:
+- listar todos os grupos com ou sem usuários;
+- recupera um usuário com suas permissões(grupo);
+- associar e desassociar um grupo ao usuário em lote, ou seja, no mesmo endpoint deve associar e desassociar.
+
+7. Criar endpoint(grupo permissão controle) com as seguintes operações:
+- listar todas as permissões com ou sem grupo;
+- listar todas as permissões de um grupo;
+- associar e desassociar permissão de grupo em lote.
+
+
+
+Obs: esse projeto está em construção.

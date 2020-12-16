@@ -38,9 +38,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 Feito por Tiago Lima 👋🏽 Entre em contato!
 
-<a href="https://www.linkedin.com/in/tiago-santos-de-lima-20941b11b">Linkedin</a>
+<a href="https://www.linkedin.com/in/tiago-santos-de-lima-20941b11b">LinkedIn</a>
 
 <a href="tiago.ldeveloper@gmail.com">Gmail</a>
 
 
-Obs: frontend está em desenvolvimento.
+Obs: frontend(angular) está em desenvolvimento.

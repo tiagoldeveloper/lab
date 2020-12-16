@@ -5,7 +5,8 @@ public class MensagemModel {
     private String chave;
     private String valor;
 
-    public MensagemModel() {}
+    public MensagemModel() {
+    }
 
     public MensagemModel(String chave, String valor) {
         this.chave = chave;

@@ -5,23 +5,18 @@ public class UsuarioModel {
     private Long id;
     private String nome;
     private String login;
-    private String senha;
 
+    public UsuarioModel() { }
 
-    public UsuarioModel() {
-    }
-
-    public UsuarioModel(Long id, String nome, String login, String senha) {
+    public UsuarioModel(Long id, String nome, String login) {
         this.id = id;
         this.nome = nome;
         this.login = login;
-        this.senha = senha;
     }
 
-    public UsuarioModel(String nome, String login, String senha) {
+    public UsuarioModel(String nome, String login) {
         this.nome = nome;
         this.login = login;
-        this.senha = senha;
     }
 
     public Long getId() {
@@ -46,14 +41,6 @@ public class UsuarioModel {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
 }

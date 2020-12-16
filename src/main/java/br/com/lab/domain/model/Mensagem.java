@@ -1,11 +1,10 @@
 package br.com.lab.domain.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "TB_MENSAGEM")
-@SequenceGenerator(name = "mensagem_seq", sequenceName = "men_seq", initialValue = 1, allocationSize = 2)
+@SequenceGenerator(name = "mensagem_seq", sequenceName = "men_seq", allocationSize = 2)
 public class Mensagem extends LabBase{
 
     @Id
@@ -13,15 +12,16 @@ public class Mensagem extends LabBase{
     @Column(name = "MEN_ID")
     private Long id;
 
-    @Column(name = "MEN_CHAVE", length = 100)
+    @Column(name = "MEN_CHAVE")
     private String chave;
 
-    @Column(name = "MEN_VALOR", length = 255)
+    @Column(name = "MEN_VALOR")
     private String valor;
 
     public Mensagem() {}
 
-    public Mensagem(Integer ativo, Date dataUltAlteracao, Integer versao, Long id, String chave, String valor) {
+    public Mensagem(Long id, String chave, String valor) {
+        super();
         this.id = id;
         this.chave = chave;
         this.valor = valor;

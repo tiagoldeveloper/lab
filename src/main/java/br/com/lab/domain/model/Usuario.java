@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "TB_USUARIO")
-@SequenceGenerator(name = "usuario_seq", sequenceName = "usu_seq", initialValue = 1, allocationSize = 2)
+@SequenceGenerator(name = "usuario_seq", sequenceName = "usu_seq", allocationSize = 2)
 public class Usuario extends LabBase{
 
     @Id
@@ -15,13 +15,13 @@ public class Usuario extends LabBase{
     @Column(name = "USU_ID")
     private Long id;
 
-    @Column(name = "USU_NOME", length = 70)
+    @Column(name = "USU_NOME", length = 100)
     private String nome;
 
-    @Column(name = "USU_LOGIN", length = 70)
+    @Column(name = "USU_LOGIN", length = 100)
     private String login;
 
-    @Column(name = "USU_SENHA", length = 255)
+    @Column(name = "USU_SENHA")
     private String senha;
 
     @ManyToMany(targetEntity = Grupo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -32,7 +32,8 @@ public class Usuario extends LabBase{
 
     public Usuario() {}
 
-    public Usuario(Integer ativo, Date dataUltAlteracao, Integer versao, Long id, String nome, String login, String senha, Set<Grupo> grupos) {
+    public Usuario(Long id, String nome, String login, String senha, Set<Grupo> grupos) {
+        super();
         this.id = id;
         this.nome = nome;
         this.login = login;
@@ -83,6 +84,7 @@ public class Usuario extends LabBase{
     public void adicionaGrupo(Grupo grupo){
         getGrupos().add(grupo);
     }
+    
     public void removeGrupo(Grupo grupo){
         getGrupos().remove(grupo);
     }

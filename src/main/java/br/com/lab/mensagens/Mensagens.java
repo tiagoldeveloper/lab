@@ -9,30 +9,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Inicialmente as mensagens irá ficar em um map, mas futuramente pode ser colocada em um servidor de cache.
- */
+//TODO: Inicialmente as mensagens irá ficar em um map, mas futuramente pode ser colocado em um servidor de cache.
 @Component
 public final class Mensagens {
 
-    private MensagemRepository mensagemRepository;
-
     private static Mensagens instance;
-
     private static Map<String, String> mensagens;
-
-    @Autowired
-    public Mensagens(MensagemRepository mensagemRepository){
-        this.mensagemRepository = mensagemRepository;
-        mensagens = mensagemRepository.recuperaMensagens();
-    }
 
     public Mensagens(){ }
 
+    @Autowired
+    public Mensagens(final MensagemRepository mensagemRepository){
+        mensagens = mensagemRepository.recuperaMensagens();
+    }
+
     public static Mensagens getInstance(){
-        if(instance ==null){
-            instance = new Mensagens();
+         if (instance!=  null) {
+            return instance;
         }
+        instance = new Mensagens();
         return instance;
     }
 
@@ -41,15 +36,12 @@ public final class Mensagens {
     }
 
     public String getMsg(List<String> chaves){
-        return chaves.stream().map(umaChave -> getMsg(umaChave)).collect(Collectors.joining(", "));
+        return chaves.stream().map(this::getMsg).collect(Collectors.joining(", "));
     }
 
     public String getMsg(String chave, Object[] parametros) {
-        if(parametros !=null){
-            return java.text.MessageFormat.format(mensagens.get(chave), parametros);
-        }
-        return mensagens.get(chave);
+        return null != parametros ?  java.text.MessageFormat.format(mensagens.get(chave), parametros) :
+                mensagens.get(chave);
     }
-
 
 }

@@ -1,10 +1,11 @@
 package br.com.lab.exceptionhandler;
 
 import br.com.lab.exception.LabBaseException;
-import br.com.lab.service.MensagemService;
+import br.com.lab.mensagens.Mensagens;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,14 +16,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.stream.Collectors;
 
-
 @ControllerAdvice
 public class LabExceptionHandler extends ResponseEntityExceptionHandler{
-
-    private MensagemService mensagemService;
-
-
-    //TODO: falta validar alguns metodos que não foi visto
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -36,7 +31,6 @@ public class LabExceptionHandler extends ResponseEntityExceptionHandler{
 
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-
         var erro = new ErroDetalheInput();
         erro.setTitulo("metodo.nao.suportado.titulo");
         erro.setMensage("metodo.nao.suportado.msg");
@@ -57,9 +51,8 @@ public class LabExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity<>(trataErroDetalhe(erro), HttpStatus.BAD_REQUEST);
     }
 
-
-    @ExceptionHandler({Exception.class, LabBaseException.class})
-    public ResponseEntity handleLabException(Exception exception, WebRequest request){
+    @ExceptionHandler({Exception.class, LabBaseException.class, UsernameNotFoundException.class})
+    public ResponseEntity<ErroDetalhe> handleLabException(Exception exception, WebRequest request){
 
         var status = HttpStatus.INTERNAL_SERVER_ERROR;
         ErroDetalheInput erroInput = new ErroDetalheInput();
@@ -92,7 +85,16 @@ public class LabExceptionHandler extends ResponseEntityExceptionHandler{
                 erroInput.setParametros(new Object[]{exception.getMessage()});
             }
 
-        }else{
+        }else if(exception instanceof UsernameNotFoundException){
+            status = HttpStatus.FORBIDDEN;
+            erroInput.setTitulo("Usuário não encontrado");
+            erroInput.setMensage("Usuário não encontrado");
+            erroInput.setStatus(status.value());
+            erroInput.setTrace(exception.getClass().getName());
+            erroInput.setParametros(new Object[]{exception.getMessage()});
+        }
+
+        else{
             erroInput.setTitulo("erro.nao.tratado.titulo");
             erroInput.setMensage("erro.nao.tratado.msg");
             erroInput.setStatus(status.value());
@@ -102,15 +104,13 @@ public class LabExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity<>(trataErroDetalhe(erroInput), status);
     }
 
-
     private ErroDetalhe trataErroDetalhe(ErroDetalheInput erro){
         var erroDetalhe = new ErroDetalhe();
-        erroDetalhe.setTitulo(MensagemService.getInstance().getMsg(erro.getTitulo()));
-        erroDetalhe.setMensage(MensagemService.getInstance().getMsg(erro.getMensage(), erro.getParametros()));
+        erroDetalhe.setTitulo(Mensagens.getInstance().getMsg(erro.getTitulo()));
+        erroDetalhe.setMensage(Mensagens.getInstance().getMsg(erro.getMensage(), erro.getParametros()));
         erroDetalhe.setCampos(StringUtils.defaultString(erro.getCampos(), ""));
-        erroDetalhe.setStatus(erro.getStatus() !=null ? erro.getStatus() : HttpStatus.BAD_REQUEST.value());
-        erroDetalhe.setTrace(StringUtils.defaultString(erro.getTrace(), MensagemService.getInstance().getMsg("stacktrace.nao.econtrado")));
+        erroDetalhe.setStatus(null != erro.getStatus() ? erro.getStatus() : HttpStatus.BAD_REQUEST.value());
+        erroDetalhe.setTrace(StringUtils.defaultString(erro.getTrace(), Mensagens.getInstance().getMsg("stacktrace.nao.econtrado")));
         return erroDetalhe;
     }
-
 }

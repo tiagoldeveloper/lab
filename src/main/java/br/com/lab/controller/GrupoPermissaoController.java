@@ -2,47 +2,49 @@ package br.com.lab.controller;
 
 import br.com.lab.exception.LabBaseException;
 import br.com.lab.model.PermissaoModel;
+import br.com.lab.model.PermissaoGrupoModel;
+import br.com.lab.model.input.GrupoPermissaoInput;
 import br.com.lab.service.GrupoPermissaoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/grupo/{grupoId}/permissao")
-public class GrupoPermissaoController {
+@RequestMapping(path = "/v1/grupo/permissao")
+public class GrupoPermissaoController implements IGrupoPermissaoController{
 
-    @Autowired
-    private GrupoPermissaoService grupoPermissaoService;
+    private final GrupoPermissaoService grupoPermissaoService;
 
-    @GetMapping
-    public List<PermissaoModel> listar(@PathVariable Long grupoId) {
+    public GrupoPermissaoController(GrupoPermissaoService grupoPermissaoService){
+        this.grupoPermissaoService = grupoPermissaoService;
+    }
+
+    @GetMapping(path = "/listar/{grupoId}")
+    public ResponseEntity<List<PermissaoGrupoModel>> listaTodasPermissoesComESemGrupo(@PathVariable Long grupoId) {
         try {
-            return grupoPermissaoService.recuperaPermissoesPorGrupo(grupoId);
+            return ResponseEntity.ok(grupoPermissaoService.recuperaTodasPermissoesComESemGrupo(grupoId));
         }catch (Exception ex){
             throw new LabBaseException(String.valueOf(grupoId), ex);
         }
     }
 
-    @PutMapping("/{permissaoId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void associar(@PathVariable Long grupoId, @PathVariable Long permissaoId) {
+    @GetMapping(path = "/buscar/{grupoId}")
+    public ResponseEntity<List<PermissaoModel>> listarPermissoesPorGrupo(@PathVariable Long grupoId) {
         try {
-            grupoPermissaoService.associar(grupoId, permissaoId);
-        }catch (Exception ex){
+            return ResponseEntity.ok(grupoPermissaoService.recuperaPermissoesGrupo(grupoId));
+        } catch (Exception ex) {
             throw new LabBaseException(String.valueOf(grupoId), ex);
         }
     }
 
-    @DeleteMapping("/{permissaoId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void desassociar(@PathVariable Long grupoId, @PathVariable Long permissaoId) {
+    @PostMapping(path = "/associar/desassociar/{grupoId}")
+    public ResponseEntity<Void> associarDesassociaEmLote(@PathVariable Long grupoId, @RequestBody List<GrupoPermissaoInput> permissoesInput) {
         try {
-            grupoPermissaoService.desassociar(grupoId, permissaoId);
+            grupoPermissaoService.associarDesassociaEmLote(grupoId, permissoesInput);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (Exception ex){
-            throw new LabBaseException(String.valueOf(grupoId), ex);
+            throw new LabBaseException(ex);
         }
     }
-
 }

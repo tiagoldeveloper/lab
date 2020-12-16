@@ -6,6 +6,14 @@ public class GrupoModel {
     private String nome;
     private String descricao;
 
+    public GrupoModel() {}
+
+    public GrupoModel(Long id, String nome, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+
     public Long getId() {
         return id;
     }
@@ -29,5 +37,4 @@ public class GrupoModel {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
 }

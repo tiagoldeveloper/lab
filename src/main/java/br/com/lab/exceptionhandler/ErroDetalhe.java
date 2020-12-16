@@ -1,6 +1,6 @@
 package br.com.lab.exceptionhandler;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 public class ErroDetalhe {
 
@@ -9,18 +9,30 @@ public class ErroDetalhe {
     private String campos;
     private Integer status;
     private String trace;
-    private Calendar timestamp = Calendar.getInstance();
+    private LocalDateTime timestamp = LocalDateTime.now();
 
+    public String getTitulo() {
+        return titulo;
+    }
 
-    public ErroDetalhe(){}
-
-    public ErroDetalhe(String titulo, String mensage, String campos, Integer status, String trace, Calendar timestamp) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getMensage() {
+        return mensage;
+    }
+
+    public void setMensage(String mensage) {
         this.mensage = mensage;
+    }
+
+    public String getCampos() {
+        return campos;
+    }
+
+    public void setCampos(String campos) {
         this.campos = campos;
-        this.status = status;
-        this.trace = trace;
-        this.timestamp = timestamp;
     }
 
     public Integer getStatus() {
@@ -31,28 +43,6 @@ public class ErroDetalhe {
         this.status = status;
     }
 
-    public Calendar getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Calendar timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {this.titulo = titulo; }
-
-    public String getMensage() {
-        return mensage;
-    }
-
-    public void setMensage(String mensage) {
-        this.mensage = mensage;
-    }
-
     public String getTrace() {
         return trace;
     }
@@ -61,11 +51,11 @@ public class ErroDetalhe {
         this.trace = trace;
     }
 
-    public String getCampos() {
-        return campos;
-    }
-    public void setCampos(String campos) {
-        this.campos = campos;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
 }

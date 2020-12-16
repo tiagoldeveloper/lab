@@ -2,42 +2,83 @@ package br.com.lab.service;
 
 import br.com.lab.domain.model.Grupo;
 import br.com.lab.domain.model.Permissao;
-import br.com.lab.dto.PermissaoModelDTO;
+import br.com.lab.dto.GrupoPermissaoModelDTO;
 import br.com.lab.model.PermissaoModel;
-import br.com.lab.repository.GrupoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.lab.model.PermissaoGrupoModel;
+import br.com.lab.model.input.GrupoPermissaoInput;
+import br.com.lab.repository.GrupoPermissaoRepository;
+import br.com.lab.util.LabUtil;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GrupoPermissaoService {
 
-    @Autowired
-    private GrupoRepository grupoRepository;
+    private final GrupoPermissaoRepository grupoPermissaoRepository;
+    private final GrupoPermissaoModelDTO grupoPermissaoModelDTO;
 
-    @Autowired
-    private PermissaoModelDTO permissaoModelDTO;
+    public GrupoPermissaoService(GrupoPermissaoRepository grupoPermissaoRepository,GrupoPermissaoModelDTO grupoPermissaoModelDTO){
+        this.grupoPermissaoRepository = grupoPermissaoRepository;
+        this.grupoPermissaoModelDTO = grupoPermissaoModelDTO;
+    }
 
-    public List<PermissaoModel> recuperaPermissoesPorGrupo(Long grupoId) {
-        Grupo grupo = grupoRepository.recupera(Grupo.class, grupoId);
-        return permissaoModelDTO.toModelCollection(grupo.getPermissoes());
+    private static void setPermissao(PermissaoGrupoModel umaPermissao) {
+        umaPermissao.setPermissaoGrupo(true);
+    }
+
+    public List<PermissaoModel> recuperaPermissoesGrupo(Long grupoId) {
+        var grupo = grupoPermissaoRepository.recupera(Grupo.class, grupoId);
+        return grupoPermissaoRepository.recuperaPermissoesGrupo(grupo.getId());
+    }
+
+    public List<PermissaoGrupoModel> recuperaTodasPermissoesComESemGrupo(Long grupoId) {
+
+        var grupo = grupoPermissaoRepository.recupera(Grupo.class, grupoId);
+        var permissoesSemGrupoModel = new ArrayList<PermissaoGrupoModel>();
+        List<PermissaoGrupoModel> permissoesGrupoModels = grupoPermissaoRepository.recuperaPermissoesPorGrupo(grupo.getId());
+
+        if(LabUtil.isNotEmpty(permissoesGrupoModels)){
+            permissoesGrupoModels.forEach(GrupoPermissaoService::setPermissao);
+            permissoesSemGrupoModel.addAll(permissoesGrupoModels);
+            var permissoesIdsGrupo = permissoesGrupoModels.stream().map(PermissaoGrupoModel::getId).collect(Collectors.toList());
+            var permissoesSemGrupo = grupoPermissaoRepository.recuperaNotIn(Permissao.class, permissoesIdsGrupo);
+            if(LabUtil.isNotEmpty(permissoesSemGrupo)){
+                permissoesSemGrupoModel.addAll(grupoPermissaoModelDTO.toPermissoesGrupoModelCollection(permissoesSemGrupo));
+            }
+        }else {
+            List<Permissao> permissoes = grupoPermissaoRepository.recupera(Permissao.class);
+            permissoesSemGrupoModel.addAll(grupoPermissaoModelDTO.toPermissoesGrupoModelCollection(permissoes));
+        }
+
+       return permissoesSemGrupoModel;
     }
 
     @Transactional
-    public void associar(Long grupoId, Long permissaoId){
-        Grupo grupo = grupoRepository.recupera(Grupo.class, grupoId);
-        Permissao permissao = grupoRepository.recupera(Permissao.class, permissaoId);
-        grupo.adicionaPermissao(permissao);
+    public void associarDesassociaEmLote(Long grupoId, List<GrupoPermissaoInput> permissoesInput){
+
+        var grupo = grupoPermissaoRepository.recupera(Grupo.class, grupoId);
+
+        var permissoesIdsSelecionadas = permissoesInput.stream().filter(GrupoPermissaoInput::isPermissaoSelecionada)
+                .map(GrupoPermissaoInput::getPermissaoId).collect(Collectors.toList());
+
+        var permissoesIdsNaoSelecionadas = permissoesInput.stream().filter(GrupoPermissaoService::isPermissaoSelecionada)
+                .map(GrupoPermissaoInput::getPermissaoId).collect(Collectors.toList());
+
+        if(LabUtil.isNotEmpty(permissoesIdsNaoSelecionadas)){
+            var permissoesNaoSelecionadas = grupoPermissaoRepository.recupera(Permissao.class, permissoesIdsNaoSelecionadas);
+            permissoesNaoSelecionadas.forEach(grupo::removePermissao);
+        }
+
+        if(LabUtil.isNotEmpty(permissoesIdsSelecionadas)){
+            var permissoesNovasSelecionadas = grupoPermissaoRepository.recupera(Permissao.class, permissoesIdsSelecionadas);
+            permissoesNovasSelecionadas.forEach(grupo::adicionaPermissao);
+        }
     }
 
-    @Transactional
-    public void desassociar(Long grupoId, Long permissaoId){
-        Grupo grupo = grupoRepository.recupera(Grupo.class, grupoId);
-        Permissao permissao = grupoRepository.recupera(Permissao.class, permissaoId);
-        grupo.removePermissao(permissao);
+    private static boolean isPermissaoSelecionada(GrupoPermissaoInput umPermissao) {
+        return !umPermissao.isPermissaoSelecionada();
     }
-
-
 }

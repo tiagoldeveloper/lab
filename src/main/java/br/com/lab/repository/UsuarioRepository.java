@@ -2,35 +2,27 @@ package br.com.lab.repository;
 
 import br.com.lab.domain.model.Usuario;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
-import javax.persistence.criteria.Root;
+import java.util.Optional;
 
 @Repository
 public class UsuarioRepository extends  LabRepository{
 
-    public  Usuario logar(String usuarioLogin){
+    public Usuario logar(String usuarioLogin){
 
-        CriteriaBuilder criteriaBuilder = getManager().getCriteriaBuilder();
-        CriteriaQuery<Usuario> criteriaQuery = criteriaBuilder.createQuery(Usuario.class);
-        Root<Usuario> root = criteriaQuery.from(Usuario.class);
-
+        var criteriaBuilder = getManager().getCriteriaBuilder();
+        var criteriaQuery = criteriaBuilder.createQuery(Usuario.class);
+        var root = criteriaQuery.from(Usuario.class);
         criteriaQuery.select(root);
-
-        ParameterExpression<Integer> ativo = criteriaBuilder.parameter(Integer.class, "ativo");
-        ParameterExpression<String> usuarioLoginParametro = criteriaBuilder.parameter(String.class, "usuarioLogin");
+        var ativo = criteriaBuilder.parameter(Integer.class, "ativo");
+        var usuarioLoginParametro = criteriaBuilder.parameter(String.class, "usuarioLogin");
         criteriaQuery.where(
                 criteriaBuilder.equal(root.get("ativo"), ativo),
-                criteriaBuilder.equal(root.get("login"), usuarioLoginParametro));
+                criteriaBuilder.equal(root.get("login"), usuarioLoginParametro)
+        );
 
-        TypedQuery<Usuario> typedQuery = getManager().createQuery(criteriaQuery);
-        typedQuery.setParameter(ativo, Integer.valueOf(1));
+        var typedQuery = getManager().createQuery(criteriaQuery);
+        typedQuery.setParameter(ativo, 1);
         typedQuery.setParameter(usuarioLoginParametro, usuarioLogin);
-
-        return typedQuery.getSingleResult();
+        return Optional.of(typedQuery.getSingleResult()).orElse(null);
     }
-
 }

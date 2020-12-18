@@ -21,7 +21,7 @@
 As seguintes ferramentas foram usadas na construção do projeto:
 - Java 
 - Spring boot
-- Mysql
+- MySQL
 - Jpa/Hibernate
 - Spring security
 - ModelMapper

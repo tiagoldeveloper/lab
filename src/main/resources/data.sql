@@ -1,154 +1,155 @@
-USE LAB;
 
-INSERT INTO MEN_SEQ(NEXT_VAL)VALUES(16);
+use lab;
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(1, 'registro.nao.encontrado.titulo','Registro não encontrado.', 1, '2020-11-27', 0, '0');
+insert into men_seq(next_val)values(16);
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(2, 'registro.nao.encontrado.msg','Registro não encontrado para o código {0}. Verifique o código e tente novamente.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(1, 'registro.nao.encontrado.titulo','registro não encontrado.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(3, 'registro.nao.pode.ser.excluido','Registro em uso, não pode ser excluido para código {0}.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(2, 'registro.nao.encontrado.msg','registro não encontrado para o código {0}. verifique o código e tente novamente.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(4, 'registro.em.uso.titulo','Registro em uso.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(3, 'registro.nao.pode.ser.excluido','registro em uso, não pode ser excluido para código {0}.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(5, 'campos.invalidos.msg','Um ou mais campos estão inválidos. Realize o preenchimento correto e tente novamente.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(4, 'registro.em.uso.titulo','registro em uso.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(6, 'campos.invalidos.titulo','Um ou mais campos estão inválidos.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(5, 'campos.invalidos.msg','um ou mais campos estão inválidos. realize o preenchimento correto e tente novamente.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(7, 'mensagem.nao.encontrada','Mensagem não encontrada', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(6, 'campos.invalidos.titulo','um ou mais campos estão inválidos.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(8, 'stacktrace.nao.econtrado','Stacktrace não encontrado.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(7, 'mensagem.nao.encontrada','mensagem não encontrada', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(9, 'erro.nao.tratado.titulo','Erro não tratado.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(8, 'stacktrace.nao.econtrado','stacktrace não encontrado.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(10, 'erro.nao.tratado.msg','Erro não tratado, verifique com responsavel.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(9, 'erro.nao.tratado.titulo','erro não tratado.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(11, 'metodo.nao.suportado.titulo','Metodo não suportado.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(10, 'erro.nao.tratado.msg','erro não tratado, verifique com responsavel.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(12, 'metodo.nao.suportado.msg','Verifique se o tipo de metodo é o correto ou se está faltando parametro e tente novamente.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(11, 'metodo.nao.suportado.titulo','metodo não suportado.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(13, 'campos.valores.invalidos.titulo','Dados invalidos.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(12, 'metodo.nao.suportado.msg','verifique se o tipo de metodo é o correto ou se está faltando parametro e tente novamente.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(14, 'campos.valores.invalidos.msg','Um ou mais campos estão com valores inválidos. Verifique os valores e tente novamente.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(13, 'campos.valores.invalidos.titulo','dados invalidos.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(15, 'campo.formato.invalido.titulo','Um ou mais campos está com formato invalido', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(14, 'campos.valores.invalidos.msg','um ou mais campos estão com valores inválidos. verifique os valores e tente novamente.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO TB_MENSAGEM(MEN_ID, MEN_CHAVE, MEN_VALOR, ATIVO, DATA_ULT_ALTERACAO, VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES(16, 'campo.formato.invalido.msg','Verifique o formato e valore(s) do(s) campo(s) e tente novamente.', 1, '2020-11-27', 0, '0');
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(15, 'campo.formato.invalido.titulo','um ou mais campos está com formato invalido', 1, '2020-11-27', 0, '0');
 
-INSERT INTO PER_SEQ(NEXT_VAL)VALUES(19);
+insert into tb_mensagem(men_id, men_chave, men_valor, ativo, data_ult_alteracao, versao, usuario_ult_alteracao)
+values(16, 'campo.formato.invalido.msg','verifique o formato e valore(s) do(s) campo(s) e tente novamente.', 1, '2020-11-27', 0, '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('1', '/v1/grupo/salvar', 'Salvar grupo', '1', '2020-12-10', '0', '0');
+insert into per_seq(next_val)values(19);
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('2', '/v1/grupo/atualizar', 'Atualizar grupo', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('1', '/v1/grupo/salvar', 'salvar grupo', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('3', '/v1/grupo/buscar', 'Buscar um grupo', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('2', '/v1/grupo/atualizar', 'atualizar grupo', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('4', '/v1/grupo/listar', 'Listar todos  grupos', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('3', '/v1/grupo/buscar', 'buscar um grupo', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('5', '/v1/grupo/remover', 'Excluir um grupo', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('4', '/v1/grupo/listar', 'listar todos  grupos', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('6', '/v1/permissao/listar', 'Lista todas permissões', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('5', '/v1/grupo/remover', 'excluir um grupo', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('7', '/v1/permissao/salvar', 'Salva permissão', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('6', '/v1/permissao/listar', 'lista todas permissões', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('8', '/v1/permissao/atualizar', 'Atualiza permissão', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('7', '/v1/permissao/salvar', 'salva permissão', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('9', '/v1/permissao/buscar', 'Busca uma permissão', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('8', '/v1/permissao/atualizar', 'atualiza permissão', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('10', '/v1/permissao/remover', 'Remove permissão', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('9', '/v1/permissao/buscar', 'busca uma permissão', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('11', '/v1/usuario/listar', 'Lista todos usuários', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('10', '/v1/permissao/remover', 'remove permissão', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('12', '/v1/usuario/buscar', 'Busca um usuário pelo id', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('11', '/v1/usuario/listar', 'lista todos usuários', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('13', '/v1/usuario/salvar', 'Salva  usuário', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('12', '/v1/usuario/buscar', 'busca um usuário pelo id', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('14', '/v1/usuario/atualizar', 'Atualiza um usuário', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('13', '/v1/usuario/salvar', 'salva  usuário', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('15', '/v1/usuario/permissao', 'Lista todas permissões por usuário', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('14', '/v1/usuario/atualizar', 'atualiza um usuário', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('16', '/v1/grupo/permissao/listar', 'Lista todas permissões por grupo', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('15', '/v1/usuario/permissao', 'lista todas permissões por usuário', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('17', '/v1/grupo/associar/desassocia/lote', 'Associa e Desassocia  permissões de grupo', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('16', '/v1/grupo/permissao/listar', 'lista todas permissões por grupo', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('18', '/v1/usuario/grupo/listar', 'Lista grupos por usuário', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('17', '/v1/grupo/associar/desassocia/lote', 'associa e desassocia  permissões de grupo', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_PERMISSAO(PER_ID,PER_URL,PER_NOME,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('19', '/v1/usuario/grupo/associar/desassociar', 'Associa e Desassocia grupos de usuário', '1', '2020-12-10', '0', '0');
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('18', '/v1/usuario/grupo/listar', 'lista grupos por usuário', '1', '2020-12-10', '0', '0');
 
-INSERT INTO GRU_SEQ(NEXT_VAL)VALUES(2);
+insert into  tb_permissao(per_id,per_url,per_nome,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('19', '/v1/usuario/grupo/associar/desassociar', 'associa e desassocia grupos de usuário', '1', '2020-12-10', '0', '0');
 
-INSERT INTO  TB_GRUPO(GRU_ID,GRU_NOME,GRU_DESCRICAO,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('1', 'ADMIN', 'Administrador do sistema, ou seja o mesmo tem acesso total ao sistema', '1', '2020-12-10', '0', '0');
+insert into gru_seq(next_val)values(2);
 
-INSERT INTO  TB_GRUPO(GRU_ID,GRU_NOME,GRU_DESCRICAO,ATIVO,DATA_ULT_ALTERACAO,VERSAO,USUARIO_ULT_ALTERACAO)
-VALUES ('2', 'USUARIO_MANUTENCAO', 'Cadastrar, Atualizar, Remover, Visualizar Informaçao, Visualizar Permissões', '1', '2020-12-10', '0', '0');
+insert into  tb_grupo(gru_id,gru_nome,gru_descricao,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('1', 'ADMIN', 'administrador do sistema, ou seja o mesmo tem acesso total ao sistema', '1', '2020-12-10', '0', '0');
 
-INSERT INTO USU_SEQ(NEXT_VAL)VALUES(2);
-INSERT INTO  TB_USUARIO(USU_ID,USU_NOME,USU_LOGIN,USU_SENHA,ATIVO,DATA_ULT_ALTERACAO,VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES ('1', 'Administrador de sistema', 'admin', '$2a$10$fDbJZlsjSrFAwBGpbtP.quUyeFsF2u6Z3ji7BIj4ItRRj5K5Ls1UO', '1', '2020-12-10', '0', '0');
+insert into  tb_grupo(gru_id,gru_nome,gru_descricao,ativo,data_ult_alteracao,versao,usuario_ult_alteracao)
+values ('2', 'USUARIO', 'cadastrar, atualizar, remover, visualizar informaçao, visualizar permissões', '1', '2020-12-10', '0', '0');
+
+insert into usu_seq(next_val)values(2);
+insert into  tb_usuario(usu_id,usu_nome,usu_login,usu_senha,ativo,data_ult_alteracao,versao, usuario_ult_alteracao)
+values ('1', 'administrador de sistema', 'admin', '$2a$10$8WChvGUIpcd9HP/xhCNX2O.4jn9jucY9xE8cG53tRiP3mavyaxtui', '1', '2020-12-10', '0', '0');
 -- admin123
 
-INSERT INTO  TB_USUARIO(USU_ID,USU_NOME,USU_LOGIN,USU_SENHA,ATIVO,DATA_ULT_ALTERACAO,VERSAO, USUARIO_ULT_ALTERACAO)
-VALUES ('2', 'Usuário do sistema', 'usuariox', '$2a$10$oZR2aHh9G6v33SqJ1eIrke2dfhZBqWWnhvIf41d4KHiVDv9MjHXXW', '1', '2020-12-10', '0', '0');
+insert into  tb_usuario(usu_id,usu_nome,usu_login,usu_senha,ativo,data_ult_alteracao,versao, usuario_ult_alteracao)
+values ('2', 'usuário do sistema', 'usuariox', '$2a$10$fh62H0EK3tbYAbY79yZ2R.F8V7q4XBr20I7VYJLPlS8nlWRDlvuhK', '1', '2020-12-10', '0', '0');
 -- usuariox123
 
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,1);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,2);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,3);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,4);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,5);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,6);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,7);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,8);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,9);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,10);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,11);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,12);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,13);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,14);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,15);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,16);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,17);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(1,18);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,1);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,2);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,3);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,4);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,5);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,6);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,7);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,8);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,9);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,10);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,11);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,12);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,13);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,14);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,15);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,16);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,17);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(1,18);
 
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(2,12);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(2,13);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(2,14);
-INSERT INTO TB_GRUPO_PERMISSAO(GRUPO_ID, PERMISSAO_ID) VALUES(2,15);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(2,12);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(2,13);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(2,14);
+insert into tb_grupo_permissao(grupo_id, permissao_id) values(2,15);
 
-INSERT INTO TB_USUARIO_GRUPO(USUARIO_ID, GRUPO_ID) VALUES(1, 1);
-INSERT INTO TB_USUARIO_GRUPO(USUARIO_ID, GRUPO_ID) VALUES(2, 2);
+insert into tb_usuario_grupo(usuario_id, grupo_id) values(1, 1);
+insert into tb_usuario_grupo(usuario_id, grupo_id) values(2, 2);

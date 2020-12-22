@@ -21,7 +21,6 @@ public class GrupoRepository extends LabRepository{
                 criteriaBuilder.equal(root.get(ATIVO), parametroAtivo),
                 criteriaBuilder.equal(root.get("id"), usuarioId)
         );
-        criteriaQuery.groupBy(usuarioGrupoJoin.get("id"));
         var typedQuery = getManager().createQuery(criteriaQuery);
         typedQuery.setParameter(ATIVO, 1);
         return typedQuery.getResultList();

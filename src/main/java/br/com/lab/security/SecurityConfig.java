@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         for(Grupo umGrupo: grupos){ //forEach não lança exception, por isso não usei
             var permissoes = permissaoRepository.recuperaPermissoesPorGrupo(umGrupo.getId());
             for (PermissaoModel umaPermissaoModel : permissoes) {
-                http.authorizeRequests().antMatchers(umaPermissaoModel.getNome()).hasAnyRole(umGrupo.getNome());
+                http.authorizeRequests().antMatchers(umaPermissaoModel.getUrl()).hasAnyRole(umGrupo.getNome());
             }
         }
         http.authorizeRequests()

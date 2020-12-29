@@ -6,11 +6,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "TB_GRUPO")
-@SequenceGenerator(name = "grupo_seq", sequenceName = "gru_seq", allocationSize = 2)
+@SequenceGenerator(name = "GRUPO_SEQ", sequenceName = "GRU_SEQ", allocationSize = 2)
 public class Grupo extends LabBase{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "grupo_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GRUPO_SEQ")
     @Column(name = "GRU_ID")
     private Long id;
 
@@ -21,9 +21,9 @@ public class Grupo extends LabBase{
     private String descricao;
 
     @ManyToMany(targetEntity = Permissao.class, fetch = FetchType.LAZY)
-    @JoinTable(name = "tb_grupo_permissao",
-            joinColumns = @JoinColumn(name = "grupo_id", foreignKey = @ForeignKey(name = "FK_GRUPO_PER")),
-            inverseJoinColumns =@JoinColumn(name = "permissao_id", foreignKey = @ForeignKey(name = "FK_PERMISSAO")))
+    @JoinTable(name = "TB_GRUPO_PERMISSAO",
+            joinColumns = @JoinColumn(name = "GRUPO_ID", foreignKey = @ForeignKey(name = "FK_GRUPO_PER")),
+            inverseJoinColumns =@JoinColumn(name = "PERMISSAO_ID", foreignKey = @ForeignKey(name = "FK_PERMISSAO")))
     private Set<Permissao> permissoes = new HashSet<>();
 
     public Grupo() {}

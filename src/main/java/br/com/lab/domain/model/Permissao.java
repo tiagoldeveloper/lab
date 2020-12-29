@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TB_PERMISSAO")
-@SequenceGenerator(name = "permissao_seq", sequenceName = "per_seq", allocationSize = 2)
+@SequenceGenerator(name = "PERMISSAO_SEQ", sequenceName = "PER_SEQ", allocationSize = 2)
 public class Permissao extends LabBase{
 
     @Id

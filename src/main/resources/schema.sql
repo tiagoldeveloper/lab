@@ -1,74 +1,91 @@
--- Scripts para mysql, caso queira rodar em oracle/sqlserver deve verificar na documentação dos mesmos.
+-- SCRIPTS PARA MYSQL, CASO QUEIRA RODAR EM ORACLE/SQLSERVER DEVE VERIFICAR NA DOCUMENTAÇÃO DOS MESMOS.
 
 
-drop database if exists lab;
+DROP DATABASE IF EXISTS LAB;
 
-create database lab character set latin1 collate latin1_general_cs;
+CREATE DATABASE LAB CHARACTER SET LATIN1 COLLATE LATIN1_GENERAL_CS;
 
-use lab;
+USE LAB;
 
-create table gru_seq(next_val bigint(20) default null);
-create table per_seq (next_val bigint(20) default null);
-create table usu_seq (next_val bigint(20) default null);
-create table men_seq (next_val bigint(20) default null);
+CREATE TABLE GRU_SEQ(NEXT_VAL BIGINT(20) DEFAULT NULL);
+CREATE TABLE PER_SEQ (NEXT_VAL BIGINT(20) DEFAULT NULL);
+CREATE TABLE USU_SEQ (NEXT_VAL BIGINT(20) DEFAULT NULL);
+CREATE TABLE MEN_SEQ (NEXT_VAL BIGINT(20) DEFAULT NULL);
+CREATE TABLE MIT_SEQ (NEXT_VAL BIGINT(20) DEFAULT NULL);
+CREATE TABLE IME_SEQ (NEXT_VAL BIGINT(20) DEFAULT NULL);
 
-create table tb_permissao (
-  per_id bigint(20) not null primary key,
-  per_url varchar(100),
-  per_nome varchar(100),
-  ativo int(11) default null,
-  data_ult_alteracao date default null,
-  versao int(11) default null,
-  usuario_ult_alteracao varchar(70) null
+
+CREATE TABLE TB_PERMISSAO (
+  PER_ID BIGINT(20) NOT NULL PRIMARY KEY,
+  PER_URL VARCHAR(100),
+  PER_NOME VARCHAR(100),
+  ATIVO INT(11) DEFAULT NULL,
+  DATA_ULT_ALTERACAO DATE DEFAULT NULL,
+  VERSAO INT(11) DEFAULT NULL,
+  USUARIO_ULT_ALTERACAO VARCHAR(70) NULL
 );
 
-create table tb_grupo (
-  gru_id bigint(20) not null primary key,
-  gru_descricao varchar(100),
-  gru_nome varchar(100),
-  ativo int(11) default null,
-  data_ult_alteracao date default null,
-  versao int(11) default null,
-  usuario_ult_alteracao varchar(70) null
+CREATE TABLE TB_GRUPO (
+  GRU_ID BIGINT(20) NOT NULL PRIMARY KEY,
+  GRU_DESCRICAO VARCHAR(100),
+  GRU_NOME VARCHAR(100),
+  ATIVO INT(11) DEFAULT NULL,
+  DATA_ULT_ALTERACAO DATE DEFAULT NULL,
+  VERSAO INT(11) DEFAULT NULL,
+  USUARIO_ULT_ALTERACAO VARCHAR(70) NULL
 );
 
-create table tb_usuario (
-  usu_id bigint(20) not null primary key,
-  usu_nome varchar(70),
-  usu_login varchar(70),
-  usu_senha varchar(200),
-  ativo int(11) default null,
-  data_ult_alteracao date default null,
-  versao int(11) default null,
-  usuario_ult_alteracao varchar(70) null
+CREATE TABLE TB_USUARIO (
+  USU_ID BIGINT(20) NOT NULL PRIMARY KEY,
+  USU_NOME VARCHAR(70),
+  USU_LOGIN VARCHAR(70),
+  USU_SENHA VARCHAR(200),
+  ATIVO INT(11) DEFAULT NULL,
+  DATA_ULT_ALTERACAO DATE DEFAULT NULL,
+  VERSAO INT(11) DEFAULT NULL,
+  USUARIO_ULT_ALTERACAO VARCHAR(70) NULL
 );
 
-create table tb_mensagem (
-  men_id bigint(20) not null primary key,
-  men_chave varchar(100),
-  men_valor varchar(255),
-  ativo int(11) default null,
-  data_ult_alteracao date default null,
-  versao int(11) default null,
-  usuario_ult_alteracao varchar(70) null
+CREATE TABLE TB_MENSAGEM (
+  MEN_ID BIGINT(20) NOT NULL PRIMARY KEY,
+  MEN_CHAVE VARCHAR(100),
+  MEN_VALOR VARCHAR(255),
+  ATIVO INT(11) DEFAULT NULL,
+  DATA_ULT_ALTERACAO DATE DEFAULT NULL,
+  VERSAO INT(11) DEFAULT NULL,
+  USUARIO_ULT_ALTERACAO VARCHAR(70) NULL
 );
 
-create table tb_usuario_grupo (
-  usuario_id bigint(20) not null,
-  grupo_id bigint(20) not null,
-  primary key (usuario_id, grupo_id),
-  key index_grupo (grupo_id),
-  constraint fk_usuario foreign key (usuario_id) references tb_usuario (usu_id) on delete no action on update no action,
-  constraint fk_grupo foreign key (grupo_id) references tb_grupo (gru_id) on delete no action on update no action
+CREATE TABLE TB_USUARIO_GRUPO (
+  USUARIO_ID BIGINT(20) NOT NULL,
+  GRUPO_ID BIGINT(20) NOT NULL,
+  PRIMARY KEY (USUARIO_ID, GRUPO_ID),
+  KEY INDEX_GRUPO (GRUPO_ID),
+  CONSTRAINT FK_USUARIO FOREIGN KEY (USUARIO_ID) REFERENCES TB_USUARIO (USU_ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT FK_GRUPO FOREIGN KEY (GRUPO_ID) REFERENCES TB_GRUPO (GRU_ID) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-create table tb_grupo_permissao (
-  grupo_id bigint(20) not null,
-  permissao_id bigint(20) not null,
-  primary key (grupo_id,permissao_id),
-  key index_permissao_id (permissao_id),
-  constraint fk_grupo_per foreign key (grupo_id) references tb_grupo (gru_id) on delete no action on update no action,
-  constraint fk_permissao foreign key (permissao_id) references tb_permissao (per_id) on delete no action on update no action
+CREATE TABLE TB_GRUPO_PERMISSAO (
+  GRUPO_ID BIGINT(20) NOT NULL,
+  PERMISSAO_ID BIGINT(20) NOT NULL,
+  PRIMARY KEY (GRUPO_ID,PERMISSAO_ID),
+  KEY INDEX_PERMISSAO_ID (PERMISSAO_ID),
+  CONSTRAINT FK_GRUPO_PER FOREIGN KEY (GRUPO_ID) REFERENCES TB_GRUPO (GRU_ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT FK_PERMISSAO FOREIGN KEY (PERMISSAO_ID) REFERENCES TB_PERMISSAO (PER_ID) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-
+CREATE TABLE TB_MENU_ITEM (
+  MIT_ID BIGINT(20) NOT NULL PRIMARY KEY,
+  MIT_NOME VARCHAR(100),
+  MIT_ICON VARCHAR(100),
+  MIT_LINK VARCHAR(100),
+  MIT_MITID BIGINT(20),
+  MIT_TIPO_MENU VARCHAR(100),
+  MIT_PERID BIGINT(20),
+  ATIVO INT(11) DEFAULT NULL,
+  DATA_ULT_ALTERACAO DATE DEFAULT NULL,
+  VERSAO INT(11) DEFAULT NULL,
+  USUARIO_ULT_ALTERACAO VARCHAR(70) NULL,
+  CONSTRAINT FK_MENU_ITEM FOREIGN KEY (MIT_MITID) REFERENCES TB_MENU_ITEM (MIT_ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT FK_MENU_ITEM_PER FOREIGN KEY (MIT_PERID) REFERENCES TB_PERMISSAO (PER_ID) ON DELETE NO ACTION ON UPDATE NO ACTION
+);

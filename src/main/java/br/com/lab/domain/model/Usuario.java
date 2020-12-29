@@ -7,11 +7,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "TB_USUARIO")
-@SequenceGenerator(name = "usuario_seq", sequenceName = "usu_seq", allocationSize = 2)
+@SequenceGenerator(name = "USUARIO_SEQ", sequenceName = "USU_SEQ", allocationSize = 2)
 public class Usuario extends LabBase{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_SEQ")
     @Column(name = "USU_ID")
     private Long id;
 
@@ -25,9 +25,9 @@ public class Usuario extends LabBase{
     private String senha;
 
     @ManyToMany(targetEntity = Grupo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "tb_usuario_grupo",
-            joinColumns = @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "FK_USUARIO")),
-            inverseJoinColumns = @JoinColumn(name = "grupo_id", foreignKey = @ForeignKey(name = "FK_GRUPO")))
+    @JoinTable(name = "TB_USUARIO_GRUPO",
+            joinColumns = @JoinColumn(name = "USUARIO_ID", foreignKey = @ForeignKey(name = "FK_USUARIO")),
+            inverseJoinColumns = @JoinColumn(name = "GRUPO_ID", foreignKey = @ForeignKey(name = "FK_GRUPO")))
     private Set<Grupo> grupos = new HashSet<>();
 
     public Usuario() {}

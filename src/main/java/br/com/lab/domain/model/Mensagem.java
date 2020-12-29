@@ -4,11 +4,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TB_MENSAGEM")
-@SequenceGenerator(name = "mensagem_seq", sequenceName = "men_seq", allocationSize = 2)
+@SequenceGenerator(name = "MENSAGEM_SEQ", sequenceName = "MEN_SEQ", allocationSize = 2)
 public class Mensagem extends LabBase{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mensagem_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MENSAGEM_SEQ")
     @Column(name = "MEN_ID")
     private Long id;
 

@@ -1,6 +1,7 @@
 package br.com.lab.domain.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_PERMISSAO")
@@ -17,6 +18,9 @@ public class Permissao extends LabBase{
 
     @Column(name = "PER_NOME", length = 100)
     private String nome;
+
+    @OneToMany(targetEntity = MenuItem.class, fetch = FetchType.LAZY, mappedBy = "permissao")
+    private List<MenuItem> menuItems;
 
     public Permissao(){}
 

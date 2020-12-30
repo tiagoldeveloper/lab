@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.permissaoRepository = permissaoRepository;
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -45,7 +46,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new AutorizadorFilter(authenticationManager(), usuarioSecurityService));
 
     }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(usuarioSecurityService).passwordEncoder(new BCryptPasswordEncoder());
@@ -55,7 +55,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationEntryPoint authenticationEntryPoint(){
         return new AcessoNegadoEntryPoint();
     }
-
-
 
 }

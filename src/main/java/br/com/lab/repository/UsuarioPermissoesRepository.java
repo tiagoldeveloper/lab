@@ -13,9 +13,9 @@ import java.util.List;
 import static br.com.lab.util.LabConstantes.ATIVO;
 
 @Repository
-public class PermissaoUsuarioRepository extends LabRepository {
+public class UsuarioPermissoesRepository extends LabRepository {
 
-    public List<MenuItemModel> recuperaPermissoesPorMenuPorUsuario(Long usuarioId) {
+    public List<MenuItemModel> recuperaPermissoesMenuItem(Long usuarioId) {
         var criteriaBuilder = getManager().getCriteriaBuilder();
         var criteriaQuery = criteriaBuilder.createQuery(MenuItemModel.class);
         var root = criteriaQuery.from(Usuario.class);

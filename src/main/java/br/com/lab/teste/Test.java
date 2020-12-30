@@ -14,6 +14,6 @@ public class Test {
         System.out.println(o.format(formatter));
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        System.out.println(encoder.encode("usuariox123"));
+        System.out.println(encoder.encode("admin123"));
     }
 }
